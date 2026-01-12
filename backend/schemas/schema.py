@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 
 class Doctor(BaseModel):
+    email: str
     name: str = Field(..., min_length=2)
     specialty: str
     years_of_experience: int = Field(..., ge=0, le=60)

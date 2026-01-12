@@ -12,9 +12,9 @@ logger = logging.getLogger(__name__)
     status_code=status.HTTP_200_OK,
     summary="Store user profile information",
 )
-def complete_profile(payload: Doctor, email: str  ):
+def complete_profile(payload: Doctor):
     
-    existing_doctor = doctors_collection.find_one({"email": email})
+    existing_doctor = doctors_collection.find_one({"email": payload.email})
     if not existing_doctor:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -34,7 +34,7 @@ def complete_profile(payload: Doctor, email: str  ):
 
     
     doctors_collection.update_one(
-        {"email": email},
+        {"email": payload.email},
         {"$set": update_data}
     )
 
