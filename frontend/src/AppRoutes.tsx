@@ -9,6 +9,7 @@ import Login from "@/pages/public/login";
 import About from "@/pages/public/about";
 import AccountActivation from "@/pages/public/accountActivation";
 import TEST from "./pages/test";
+import Register from "./pages/doctor/register";
 
 export default function AppRoutes() {
   const { isAuthenticated } = useAuth();
@@ -29,7 +30,7 @@ export default function AppRoutes() {
 
 
 
-
+      <Route path="/doctor-register" element={<Register />} />
 
       {/* ===============Private Routes=============== */}
       <Route
