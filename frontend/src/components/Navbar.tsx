@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
-import { ModeToggle } from "./ModeToggle";
 import { X, Menu, Hospital } from "lucide-react";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
+
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -45,8 +46,8 @@ export function Navbar() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-3">
-            <ModeToggle />
+          <div className="flex items-center gap-6">
+           <AnimatedThemeToggler />
 
             <Link to="/get-activation-link" className="hidden sm:inline-block">
               <Button
