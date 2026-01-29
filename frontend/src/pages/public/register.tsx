@@ -75,7 +75,7 @@ export default function Registration() {
       setIsValidatingToken(true);
       try {
         const response = await fetch(
-          `${SERVER_URL}/api/auth/activate?token=${token}`,
+          `${SERVER_URL}/auth/activate?token=${token}`,
           {
             method: "POST",
             headers: {

@@ -46,7 +46,6 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -83,7 +82,6 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-
 .dark {
   --background: oklch(0.09 0 0);
   --foreground: oklch(0.985 0 0);
@@ -118,7 +116,6 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -139,4 +136,8 @@
 * {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+}
+::view-transition-old(root), ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }
