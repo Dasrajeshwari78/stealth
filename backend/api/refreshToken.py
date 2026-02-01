@@ -1,5 +1,5 @@
-from fastapi import APIRouter, HTTPException, status, Request, Response
-from utils.jwt_helper import create_access_token, create_refresh_token, REFRESH_EXPIRE_DAYS
+from fastapi import APIRouter, HTTPException, status, Request, Response, Depends
+from utils.jwt_helper import create_access_token, create_refresh_token, REFRESH_EXPIRE_DAYS, verify_csrf
 from db.mongo_client import doctors_collection
 from jose import jwt, JWTError
 from dotenv import load_dotenv
@@ -14,10 +14,11 @@ IS_PROD = os.getenv("ENVIRONMENT") == "production"
 
 router = APIRouter()
 
-@router.get(
+@router.post(
     "/refresh",
     status_code=status.HTTP_200_OK,
     summary="Refresh access and refresh tokens",
+    dependencies=[Depends(verify_csrf)],
 )
 def refresh_token(request: Request, response: Response):
     token = request.cookies.get("refresh_token")

@@ -18,8 +18,8 @@ class Patient(BaseModel):
     age: int = Field(..., ge=0, le=120)
     gender: Literal["Male", "Female", "Other"]
     phone: str = Field(..., min_length=10, max_length=15)
-    transcript: dict[str, str]
-    doctorId: str = Field(..., min_length=2)
+    audioUrl: str
+    doctorEmail: str = Field(..., min_length=2)
 
 class PatientResponse(BaseModel):
     id: Optional[str] 
@@ -42,5 +42,7 @@ class VisitUpdate(BaseModel):
 class VisitResponse(BaseModel):
     id: str
     patientId: str
-    transcript: Dict[str, str]
     date: datetime
+    notes: list[str]
+    transcription: list[str]
+
